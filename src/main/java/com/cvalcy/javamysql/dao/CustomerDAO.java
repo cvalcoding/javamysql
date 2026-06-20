@@ -23,7 +23,16 @@ public class CustomerDAO extends Dao<Customer> {
                         rs.getInt("customerNumber"),
                         rs.getString("customerName"),
                         rs.getString("contactLastName"),
-                        rs.getString("contactFirstName")
+                        rs.getString("contactFirstName"),
+                        rs.getString("phone"),
+                        rs.getString("addressLine1"),
+                        rs.getString("addressLine2"),
+                        rs.getString("city"),
+                        rs.getString("state"),
+                        rs.getString("postalCode"),
+                        rs.getString("country"),
+                        rs.getString("salesRepEmployeeNumber"),
+                        rs.getString("creditLimit")
                 );
                 customers.add(customer);
             }
@@ -46,10 +55,19 @@ public class CustomerDAO extends Dao<Customer> {
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 customer = new Customer(
-                        id,
+                        rs.getInt("customerNumber"),
                         rs.getString("customerName"),
                         rs.getString("contactLastName"),
-                        rs.getString("contactFirstName")
+                        rs.getString("contactFirstName"),
+                        rs.getString("phone"),
+                        rs.getString("addressLine1"),
+                        rs.getString("addressLine2"),
+                        rs.getString("city"),
+                        rs.getString("state"),
+                        rs.getString("postalCode"),
+                        rs.getString("country"),
+                        rs.getString("salesRepEmployeeNumber"),
+                        rs.getString("creditLimit")
                 );
             }
         } catch (SQLException e) {
