@@ -8,7 +8,7 @@ import java.util.List;
 
 public class CustomerTableModel extends AbstractTableModel {
 
-    private final String[] colunmName = {"number", "customerName", "contact_first_name", "contact_last_name", "phone", "address", "address 2", "city", "state", "postal code", "country", "sales employee number"};
+    private final String[] columnName = {"number", "customerName", "contact_first_name", "contact_last_name", "phone", "address", "address 2", "city", "state", "postal code", "country", "sales employee number"};
     private final List<Customer> customers;
 
     public CustomerTableModel() {
@@ -23,7 +23,7 @@ public class CustomerTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return colunmName.length;
+        return columnName.length;
     }
 
     @Override
@@ -48,6 +48,6 @@ public class CustomerTableModel extends AbstractTableModel {
 
     @Override
     public String getColumnName(int column) {
-        return colunmName[column];
+        return columnName[column];
     }
 }

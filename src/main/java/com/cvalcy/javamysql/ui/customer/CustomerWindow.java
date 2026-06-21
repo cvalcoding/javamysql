@@ -2,9 +2,9 @@ package com.cvalcy.javamysql.ui.customer;
 
 import javax.swing.*;
 
-public class Window extends JFrame {
+public class CustomerWindow extends JFrame {
 
-    public Window() {
+    public CustomerWindow() {
         super("Customers");
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setSize(1200, 800);
