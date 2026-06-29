@@ -4,17 +4,16 @@ import javax.swing.*;
 
 public class EmployeeWindow extends JFrame {
 
+    EmployeeTableModel tableModel;
+
     public EmployeeWindow() {
-        super("Employee");
-        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setSize(1200, 800);
-        this.setLocationRelativeTo(null);
 
-        EmployeeTableModel tableModel = new EmployeeTableModel();
+        this.tableModel = new EmployeeTableModel();
+    }
 
-        JTable table = new JTable(tableModel);
-        this.getContentPane().add(new JScrollPane(table));
-
-        this.setVisible(true);
+    public JScrollPane table() {
+        JTable table = new JTable(this.tableModel);
+        JScrollPane scrollPane = new JScrollPane(table);
+        return scrollPane;
     }
 }
