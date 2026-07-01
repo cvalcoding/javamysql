@@ -2,6 +2,7 @@ package com.cvalcy.javamysql.ui;
 
 import com.cvalcy.javamysql.ui.customer.CustomerWindow;
 import com.cvalcy.javamysql.ui.employee.EmployeeWindow;
+import com.cvalcy.javamysql.ui.office.OfficeWindow;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +20,7 @@ public class AppWindow extends JFrame implements ActionListener {
         this.mainPanel.setLayout(this.card);
         EmployeeWindow employeeWindow = new EmployeeWindow();
         CustomerWindow customerWindow = new CustomerWindow();
+        OfficeWindow officeWindow = new OfficeWindow();
 
         JButton employeeButton = new JButton("employee");
         employeeButton.addActionListener(this);
@@ -26,12 +28,17 @@ public class AppWindow extends JFrame implements ActionListener {
         JButton customerButton = new JButton("customer");
         customerButton.addActionListener(this);
 
+        JButton officeButton = new JButton("office");
+        officeButton.addActionListener(this);
+
         this.mainPanel.add(employeeWindow.table(), "employee");
         this.mainPanel.add(customerWindow.table(), "customer");
+        this.mainPanel.add(officeWindow.myCustomLabel(), "office");
 
         JPanel panel1 = new JPanel();
         panel1.add(employeeButton);
         panel1.add(customerButton);
+        panel1.add(officeButton);
 
         panel1.setLayout(new FlowLayout(FlowLayout.CENTER));
 
@@ -52,6 +59,7 @@ public class AppWindow extends JFrame implements ActionListener {
         switch (obj.toString()) {
             case "employee" -> this.card.show(this.mainPanel, "employee");
             case "customer" -> this.card.show(this.mainPanel, "customer");
+            case "office" -> this.card.show(this.mainPanel, "office");
             default -> this.card.show(this.mainPanel, "employee");
         }
     }

@@ -8,10 +8,6 @@ import java.util.List;
 public class CustomerService {
     private final CustomerDAO customerDAO = new CustomerDAO();
 
-//    public CustomerService() {
-//        this.customerDAO = new CustomerDAO();
-//    }
-
     public List<Customer> getAllCustomer() {
         return this.customerDAO.fetchAll();
     }
