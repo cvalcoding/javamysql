@@ -20,24 +20,18 @@ public class AppWindow extends JFrame implements ActionListener {
         EmployeeWindow employeeWindow = new EmployeeWindow();
         CustomerWindow customerWindow = new CustomerWindow();
 
-        JButton btn1 = new JButton("TOTO");
-        btn1.addActionListener(this);
+        JButton employeeButton = new JButton("employee");
+        employeeButton.addActionListener(this);
 
-        JButton btn2 = new JButton("Majin");
-        btn2.addActionListener(this);
+        JButton customerButton = new JButton("customer");
+        customerButton.addActionListener(this);
 
-        this.mainPanel.add(employeeWindow.table());
-        this.mainPanel.add(customerWindow.table());
+        this.mainPanel.add(employeeWindow.table(), "employee");
+        this.mainPanel.add(customerWindow.table(), "customer");
 
-        JButton btn3 = new JButton("C");
-        JButton btn4 = new JButton("D");
-        JButton btn5 = new JButton("E");
         JPanel panel1 = new JPanel();
-        panel1.add(btn1);
-        panel1.add(btn2);
-        panel1.add(btn3);
-        panel1.add(btn4);
-        panel1.add(btn5);
+        panel1.add(employeeButton);
+        panel1.add(customerButton);
 
         panel1.setLayout(new FlowLayout(FlowLayout.CENTER));
 
@@ -54,6 +48,11 @@ public class AppWindow extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object obj = e.getActionCommand();
         System.out.println(obj);
-        this.card.next(this.mainPanel);
+
+        switch (obj.toString()) {
+            case "employee" -> this.card.show(this.mainPanel, "employee");
+            case "customer" -> this.card.show(this.mainPanel, "customer");
+            default -> this.card.show(this.mainPanel, "employee");
+        }
     }
 }
