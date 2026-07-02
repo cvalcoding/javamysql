@@ -11,12 +11,10 @@ import java.awt.event.ActionListener;
 
 public class AppWindow extends JFrame implements ActionListener {
 
-    JScrollPane scrollPane = null;
     CardLayout card = new CardLayout();
     JPanel mainPanel = new JPanel();
 
     public AppWindow() {
-        JPanel content = new JPanel();
         this.mainPanel.setLayout(this.card);
         EmployeeWindow employeeWindow = new EmployeeWindow();
         CustomerWindow customerWindow = new CustomerWindow();
@@ -33,7 +31,7 @@ public class AppWindow extends JFrame implements ActionListener {
 
         this.mainPanel.add(employeeWindow.table(), "employee");
         this.mainPanel.add(customerWindow.table(), "customer");
-        this.mainPanel.add(officeWindow.myCustomLabel(), "office");
+        this.mainPanel.add(officeWindow.table(), "office");
 
         JPanel panel1 = new JPanel();
         panel1.add(employeeButton);
