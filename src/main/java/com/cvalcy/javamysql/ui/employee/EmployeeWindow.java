@@ -13,7 +13,6 @@ public class EmployeeWindow extends JFrame {
 
     public JScrollPane table() {
         JTable table = new JTable(this.tableModel);
-        JScrollPane scrollPane = new JScrollPane(table);
-        return scrollPane;
+        return new JScrollPane(table);
     }
 }
