@@ -1,15 +1,15 @@
-package com.cvalcy.javamysql.ui.customer;
+package com.cvalcy.javamysql.ui.order;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class CustomerWindow extends JFrame {
+public class OrderWindow extends JFrame {
 
-	private final CustomerTableModel tableModel;
+	OrderTableModel tableModel;
 
-	public CustomerWindow() {
-		this.tableModel = new CustomerTableModel();
+	public OrderWindow() {
+		this.tableModel = new OrderTableModel();
 	}
 
 	public JScrollPane table() {
