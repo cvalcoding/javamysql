@@ -1,18 +1,31 @@
 package com.cvalcy.javamysql.ui.employee;
 
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class EmployeeWindow extends JFrame {
 
-    EmployeeTableModel tableModel;
+	EmployeeTableModel tableModel;
 
-    public EmployeeWindow() {
+	public EmployeeWindow() {
+		this.tableModel = new EmployeeTableModel();
+	}
 
-        this.tableModel = new EmployeeTableModel();
-    }
+	public JScrollPane table() {
+		JTable table = new JTable(this.tableModel);
+		table.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
 
-    public JScrollPane table() {
-        JTable table = new JTable(this.tableModel);
-        return new JScrollPane(table);
-    }
+				int row = table.rowAtPoint(e.getPoint());
+				int col = table.columnAtPoint(e.getPoint());
+				if (col == 0) {
+					System.out.println(table.getValueAt(row, col));
+				}
+			}
+		});
+		return new JScrollPane(table);
+	}
 }
