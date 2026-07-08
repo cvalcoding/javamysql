@@ -5,6 +5,7 @@ import com.cvalcy.javamysql.ui.employee.EmployeeWindow;
 import com.cvalcy.javamysql.ui.office.OfficeWindow;
 import com.cvalcy.javamysql.ui.order.OrderWindow;
 import com.cvalcy.javamysql.ui.orderDetail.OrderDetailWindow;
+import com.cvalcy.javamysql.ui.product.ProductWindow;
 
 import javax.swing.*;
 import java.awt.*;
@@ -22,6 +23,7 @@ public class AppWindow extends JFrame implements ActionListener {
 		OfficeWindow officeWindow = new OfficeWindow();
 		OrderWindow orderWindow = new OrderWindow();
 		OrderDetailWindow orderDetailWindow = new OrderDetailWindow();
+		ProductWindow productWindow = new ProductWindow();
 
 		this.mainPanel.setLayout(this.card);
 
@@ -40,11 +42,15 @@ public class AppWindow extends JFrame implements ActionListener {
 		JButton orderDetailButton = new JButton("order detail");
 		orderDetailButton.addActionListener(this);
 
+		JButton productButton = new JButton("product");
+		productButton.addActionListener(this);
+
 		this.mainPanel.add(employeeWindow.table(), "employee");
 		this.mainPanel.add(customerWindow.table(), "customer");
 		this.mainPanel.add(officeWindow.table(), "office");
 		this.mainPanel.add(orderWindow.table(), "order");
 		this.mainPanel.add(orderDetailWindow.table(), "orderDetail");
+		this.mainPanel.add(productWindow.table(), "product");
 
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(employeeButton);
@@ -52,6 +58,7 @@ public class AppWindow extends JFrame implements ActionListener {
 		buttonPanel.add(officeButton);
 		buttonPanel.add(orderButton);
 		buttonPanel.add(orderDetailButton);
+		buttonPanel.add(productButton);
 
 		buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
@@ -75,6 +82,7 @@ public class AppWindow extends JFrame implements ActionListener {
 			case "office" -> this.card.show(this.mainPanel, "office");
 			case "order" -> this.card.show(this.mainPanel, "order");
 			case "order detail" -> this.card.show(this.mainPanel, "orderDetail");
+			case "product" -> this.card.show(this.mainPanel, "product");
 			default -> this.card.show(this.mainPanel, "employee");
 		}
 	}
