@@ -41,4 +41,9 @@ public class ProductTableModel extends AbstractTableModel {
 			default -> throw new IllegalArgumentException();
 		};
 	}
+
+	@Override
+	public String getColumnName(int column) {
+		return this.columnName[column];
+	}
 }
