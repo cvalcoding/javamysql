@@ -5,6 +5,7 @@ import com.cvalcy.javamysql.ui.employee.EmployeeWindow;
 import com.cvalcy.javamysql.ui.office.OfficeWindow;
 import com.cvalcy.javamysql.ui.order.OrderWindow;
 import com.cvalcy.javamysql.ui.orderDetail.OrderDetailWindow;
+import com.cvalcy.javamysql.ui.payment.PaymentWindow;
 import com.cvalcy.javamysql.ui.product.ProductWindow;
 import com.cvalcy.javamysql.ui.productLine.ProductLineWindow;
 
@@ -26,6 +27,7 @@ public class AppWindow extends JFrame implements ActionListener {
 		OrderDetailWindow orderDetailWindow = new OrderDetailWindow();
 		ProductWindow productWindow = new ProductWindow();
 		ProductLineWindow productLineWindow = new ProductLineWindow();
+		PaymentWindow paymentWindow = new PaymentWindow();
 
 		this.mainPanel.setLayout(this.card);
 
@@ -50,6 +52,9 @@ public class AppWindow extends JFrame implements ActionListener {
 		JButton productLineButton = new JButton("product line");
 		productLineButton.addActionListener(this);
 
+		JButton paymentButton = new JButton("payment");
+		paymentButton.addActionListener(this);
+
 		this.mainPanel.add(employeeWindow.table(), "employee");
 		this.mainPanel.add(customerWindow.table(), "customer");
 		this.mainPanel.add(officeWindow.table(), "office");
@@ -57,6 +62,7 @@ public class AppWindow extends JFrame implements ActionListener {
 		this.mainPanel.add(orderDetailWindow.table(), "orderDetail");
 		this.mainPanel.add(productWindow.table(), "product");
 		this.mainPanel.add(productLineWindow.table(), "productLine");
+		this.mainPanel.add(paymentWindow.table(), "payment");
 
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(employeeButton);
@@ -66,6 +72,7 @@ public class AppWindow extends JFrame implements ActionListener {
 		buttonPanel.add(orderDetailButton);
 		buttonPanel.add(productButton);
 		buttonPanel.add(productLineButton);
+		buttonPanel.add(paymentButton);
 
 		buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
 
@@ -91,6 +98,7 @@ public class AppWindow extends JFrame implements ActionListener {
 			case "order detail" -> this.card.show(this.mainPanel, "orderDetail");
 			case "product" -> this.card.show(this.mainPanel, "product");
 			case "product line" -> this.card.show(this.mainPanel, "productLine");
+			case "payment" -> this.card.show(this.mainPanel, "payment");
 			default -> this.card.show(this.mainPanel, "employee");
 		}
 	}
