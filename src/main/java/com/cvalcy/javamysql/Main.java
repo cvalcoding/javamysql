@@ -6,10 +6,7 @@ import com.cvalcy.javamysql.core.Log;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 	public static void main(String[] args) {
-		Log.info();
-		Log.error();
-		Log.debug();
-		Log.warn();
+		Log.info("premier test avec la class");
 //        new AppWindow();
 	}
 }
