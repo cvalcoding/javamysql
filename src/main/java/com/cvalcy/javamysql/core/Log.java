@@ -23,6 +23,10 @@ public class Log {
 		LOGGER.error(msg);
 	}
 
+	public static void error(int code) {
+		LOGGER.error(code);
+	}
+
 	public static void error(String msg, int code) {
 		String formatMsg = String.format("Msg: %s, Error code: %s", msg, code);
 		LOGGER.error(formatMsg);

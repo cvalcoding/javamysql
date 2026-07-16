@@ -1,5 +1,6 @@
 package com.cvalcy.javamysql.dao;
 
+import com.cvalcy.javamysql.core.Log;
 import com.cvalcy.javamysql.model.Customer;
 
 import java.sql.PreparedStatement;
@@ -19,28 +20,12 @@ public class CustomerDAO extends Dao<Customer> {
 			PreparedStatement stmt = this.db.prepareStatement(query);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Customer customer = new Customer(
-						rs.getInt("customerNumber"),
-						rs.getString("customerName"),
-						rs.getString("contactLastName"),
-						rs.getString("contactFirstName"),
-						rs.getString("phone"),
-						rs.getString("addressLine1"),
-						rs.getString("addressLine2"),
-						rs.getString("city"),
-						rs.getString("state"),
-						rs.getString("postalCode"),
-						rs.getString("country"),
-						rs.getString("salesRepEmployeeNumber"),
-						rs.getString("creditLimit")
-				);
-				customers.add(customer);
+				customers.add(createCustomer(rs));
 			}
 
 		} catch (SQLException e) {
-			System.err.println(e.getErrorCode());
-			System.err.println(e.getMessage());
-			throw new RuntimeException(e);
+			Log.error(e.getMessage(), e.getErrorCode());
+			throw new RuntimeException(e.getMessage());
 		}
 		return customers;
 	}
@@ -54,26 +39,32 @@ public class CustomerDAO extends Dao<Customer> {
 			PreparedStatement stmt = this.db.prepareStatement(query);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				customer = new Customer(
-						rs.getInt("customerNumber"),
-						rs.getString("customerName"),
-						rs.getString("contactLastName"),
-						rs.getString("contactFirstName"),
-						rs.getString("phone"),
-						rs.getString("addressLine1"),
-						rs.getString("addressLine2"),
-						rs.getString("city"),
-						rs.getString("state"),
-						rs.getString("postalCode"),
-						rs.getString("country"),
-						rs.getString("salesRepEmployeeNumber"),
-						rs.getString("creditLimit")
-				);
+				customer = createCustomer(rs);
 			}
 		} catch (SQLException e) {
+			Log.error(e.getMessage(), e.getErrorCode());
 			throw new RuntimeException(e);
 		}
 
 		return customer;
+	}
+
+	private Customer createCustomer(ResultSet rs) throws SQLException {
+		return new Customer(
+				rs.getInt("customerNumber"),
+				rs.getString("customerName"),
+				rs.getString("contactLastName"),
+				rs.getString("contactFirstName"),
+				rs.getString("phone"),
+				rs.getString("addressLine1"),
+				rs.getString("addressLine2"),
+				rs.getString("city"),
+				rs.getString("state"),
+				rs.getString("postalCode"),
+				rs.getString("country"),
+				rs.getString("salesRepEmployeeNumber"),
+				rs.getString("creditLimit")
+		);
+
 	}
 }
